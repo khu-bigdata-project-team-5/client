@@ -44,13 +44,16 @@ const Home = () => {
     data: keywords,
     loading: keywordsLoading,
     error: keywordsError,
-  } = useFetch(ENDPOINTS.KEYWORDS);
+  } = useFetch(ENDPOINTS.KEYWORDS, { method: "get" });
   const {
     data: lectures,
     loading: lecturesLoading,
     error: lecturesError,
     fetchData: fetchLectures,
-  } = useFetch(ENDPOINTS.LECTURES);
+  } = useFetch(ENDPOINTS.LECTURES, {
+    method: "get",
+    params: { category: selectedCategory },
+  });
   useEffect(() => {
     fetchLectures();
   }, [selectedCategory]);
