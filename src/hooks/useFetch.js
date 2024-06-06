@@ -8,6 +8,7 @@ const useFetch = (endpoint) => {
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const service = mockService;
       const response = await service.get(endpoint);
       setData(response.data);
