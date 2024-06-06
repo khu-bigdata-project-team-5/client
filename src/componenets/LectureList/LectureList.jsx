@@ -1,6 +1,6 @@
 import * as S from "./LectureList.style.js";
 
-const LectureList = () => {
+const LectureList = ({ lectures }) => {
   return (
     <S.LectureListContainer>
       <S.TitleRow>
@@ -8,112 +8,28 @@ const LectureList = () => {
         <S.More>더보기</S.More>
       </S.TitleRow>
       <S.LecturesContainer>
-        <S.LectureWrapper>
-          <S.LectureImage />
-          <S.LectureTitle>
-            리액트 완벽 파해치기 - 기초부터 고급단계까지
-            상태관리마스터리마스터리마스터
-          </S.LectureTitle>
-          <S.LectureTagRow>
-            <S.LectureTag>Javascript</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-          </S.LectureTagRow>
-          <S.LectureMoreRow>
-            <S.LectureRatingRow>
-              <S.LectureRatingIcon
-                src={require("../../assets/icons/rating.png")}
-              />
-              <S.LectureRatingText>4.5</S.LectureRatingText>
-            </S.LectureRatingRow>
-            <S.LecturePrice>33,000원</S.LecturePrice>
-          </S.LectureMoreRow>
-        </S.LectureWrapper>
-        <S.LectureWrapper>
-          <S.LectureImage />
-          <S.LectureTitle>
-            리액트 완벽 파해치기 - 기초부터 고급단계까지
-            상태관리마스터리마스터리마스터
-          </S.LectureTitle>
-          <S.LectureTagRow>
-            <S.LectureTag>Javascript</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-          </S.LectureTagRow>
-          <S.LectureMoreRow>
-            <S.LectureRatingRow>
-              <S.LectureRatingIcon
-                src={require("../../assets/icons/rating.png")}
-              />
-              <S.LectureRatingText>4.5</S.LectureRatingText>
-            </S.LectureRatingRow>
-            <S.LecturePrice>33,000원</S.LecturePrice>
-          </S.LectureMoreRow>
-        </S.LectureWrapper>
-
-        <S.LectureWrapper>
-          <S.LectureImage />
-          <S.LectureTitle>
-            리액트 완벽 파해치기 - 기초부터 고급단계까지 상태관리마스터
-          </S.LectureTitle>
-          <S.LectureTagRow>
-            <S.LectureTag>Javascript</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-          </S.LectureTagRow>
-          <S.LectureMoreRow>
-            <S.LectureRatingRow>
-              <S.LectureRatingIcon
-                src={require("../../assets/icons/rating.png")}
-              />
-              <S.LectureRatingText>4.5</S.LectureRatingText>
-            </S.LectureRatingRow>
-            <S.LecturePrice>33,000원</S.LecturePrice>
-          </S.LectureMoreRow>
-        </S.LectureWrapper>
-
-        <S.LectureWrapper>
-          <S.LectureImage />
-          <S.LectureTitle>
-            리액트 완벽 파해치기 - 기초부터 고급단계까지 상태관리마스터
-          </S.LectureTitle>
-          <S.LectureTagRow>
-            <S.LectureTag>Javascript</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-          </S.LectureTagRow>
-          <S.LectureMoreRow>
-            <S.LectureRatingRow>
-              <S.LectureRatingIcon
-                src={require("../../assets/icons/rating.png")}
-              />
-              <S.LectureRatingText>4.5</S.LectureRatingText>
-            </S.LectureRatingRow>
-            <S.LecturePrice>33,000원</S.LecturePrice>
-          </S.LectureMoreRow>
-        </S.LectureWrapper>
-
-        <S.LectureWrapper>
-          <S.LectureImage />
-          <S.LectureTitle>
-            리액트 완벽 파해치기 - 기초부터 고급단계까지 상태관리마스터
-          </S.LectureTitle>
-          <S.LectureTagRow>
-            <S.LectureTag>Javascript</S.LectureTag>
-            <S.LectureTag>React</S.LectureTag>
-          </S.LectureTagRow>
-          <S.LectureMoreRow>
-            <S.LectureRatingRow>
-              <S.LectureRatingIcon
-                src={require("../../assets/icons/rating.png")}
-              />
-              <S.LectureRatingText>4.5</S.LectureRatingText>
-            </S.LectureRatingRow>
-            <S.LecturePrice>33,000원</S.LecturePrice>
-          </S.LectureMoreRow>
-        </S.LectureWrapper>
+        {lectures.map((lecture) => (
+          <S.LectureWrapper key={lecture.id}>
+            <S.LectureImage src={lecture.thumbnail} />
+            <S.LectureTitle>{lecture.title}</S.LectureTitle>
+            <S.LectureTagRow>
+              {lecture.tag.map((tag) => (
+                <S.LectureTag key={tag}>{tag}</S.LectureTag>
+              ))}
+            </S.LectureTagRow>
+            <S.LectureMoreRow>
+              <S.LectureRatingRow>
+                <S.LectureRatingIcon
+                  src={require("../../assets/icons/rating.png")}
+                />
+                <S.LectureRatingText>{lecture.rating}</S.LectureRatingText>
+              </S.LectureRatingRow>
+              <S.LecturePrice>
+                {lecture.price.toLocaleString()}원
+              </S.LecturePrice>
+            </S.LectureMoreRow>
+          </S.LectureWrapper>
+        ))}
       </S.LecturesContainer>
     </S.LectureListContainer>
   );
