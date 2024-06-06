@@ -2,22 +2,11 @@ import * as S from "./Home.style.js";
 import Loading from "../Loading/Loading.jsx";
 import Navbar from "../../componenets/Navbar/Navbar.jsx";
 import LectureList from "../../componenets/LectureList/LectureList.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import { ENDPOINTS } from "../../api/endpoints.js";
 
 const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState(0);
-  const {
-    data: keywords,
-    loading: keywordsLoading,
-    error: keywordsError,
-  } = useFetch(ENDPOINTS.KEYWORDS);
-  const {
-    data: lectures,
-    loading: lecturesLoading,
-    error: lecturesError,
-  } = useFetch(ENDPOINTS.LECTURES);
   const categories = [
     {
       name: "프로그래밍 언어",
@@ -50,6 +39,22 @@ const Home = () => {
       selectIcon: require("../../assets/icons/ai_select.png"),
     },
   ];
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  const {
+    data: keywords,
+    loading: keywordsLoading,
+    error: keywordsError,
+  } = useFetch(ENDPOINTS.KEYWORDS);
+  const {
+    data: lectures,
+    loading: lecturesLoading,
+    error: lecturesError,
+    fetchData: fetchLectures,
+  } = useFetch(ENDPOINTS.LECTURES);
+  useEffect(() => {
+    fetchLectures();
+  }, [selectedCategory]);
+
   if (keywordsLoading || lecturesLoading) return <Loading />;
   if (keywordsError || lecturesError) alert("에러가 발생했습니다.");
   return (
