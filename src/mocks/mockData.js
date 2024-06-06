@@ -19,7 +19,7 @@ export const mockData = {
         "Django",
         "Flask",
       ],
-      2,
+      { min: 1, max: 4 },
     ),
     rating: faker.number.float({ min: 1, max: 5, precision: 0.1 }),
     price: faker.number.int({ min: 10000, max: 100000, precision: 1000 }),
