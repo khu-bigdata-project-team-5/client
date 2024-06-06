@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const LectureListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 3rem;
 `;
 
 export const TitleRow = styled.div`
