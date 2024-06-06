@@ -1,4 +1,5 @@
 import * as S from "./Navbar.style";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ keywords }) => {
   const settings = {
@@ -13,10 +14,12 @@ const Navbar = ({ keywords }) => {
   };
   return (
     <S.NavbarConatiner>
-      <S.NavbarIcon
-        src={require("../../assets/icons/logo_nav.png")}
-        alt="logo"
-      />
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <S.NavbarIcon
+          src={require("../../assets/icons/logo_nav.png")}
+          alt="logo"
+        />
+      </Link>
       <S.NavbarRankWrapper>
         <S.NavbarRankTitle>실시간 키워드</S.NavbarRankTitle>
         <S.NavbarSlider {...settings}>
@@ -28,8 +31,12 @@ const Navbar = ({ keywords }) => {
         </S.NavbarSlider>
       </S.NavbarRankWrapper>
       <S.NavbarItemWrapper>
-        <S.NavbarItem>다른 커리큘럼</S.NavbarItem>
-        <S.NavbarItem>나의 커리큘럼</S.NavbarItem>
+        <Link to="/other" style={{ textDecoration: "none" }}>
+          <S.NavbarItem>다른 커리큘럼</S.NavbarItem>
+        </Link>
+        <Link to="/curriculum/keyworld" style={{ textDecoration: "none" }}>
+          <S.NavbarItem>나의 커리큘럼</S.NavbarItem>
+        </Link>
       </S.NavbarItemWrapper>
     </S.NavbarConatiner>
   );

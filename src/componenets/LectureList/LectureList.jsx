@@ -1,4 +1,5 @@
 import * as S from "./LectureList.style.js";
+import { Link } from "react-router-dom";
 
 const LectureList = ({ lectures }) => {
   return (
@@ -9,26 +10,32 @@ const LectureList = ({ lectures }) => {
       </S.TitleRow>
       <S.LecturesContainer>
         {lectures.map((lecture) => (
-          <S.LectureWrapper key={lecture.id}>
-            <S.LectureImage src={lecture.thumbnail} />
-            <S.LectureTitle>{lecture.title}</S.LectureTitle>
-            <S.LectureTagRow>
-              {lecture.tag.map((tag) => (
-                <S.LectureTag key={tag}>{tag}</S.LectureTag>
-              ))}
-            </S.LectureTagRow>
-            <S.LectureMoreRow>
-              <S.LectureRatingRow>
-                <S.LectureRatingIcon
-                  src={require("../../assets/icons/rating.png")}
-                />
-                <S.LectureRatingText>{lecture.rating}</S.LectureRatingText>
-              </S.LectureRatingRow>
-              <S.LecturePrice>
-                {lecture.price.toLocaleString()}원
-              </S.LecturePrice>
-            </S.LectureMoreRow>
-          </S.LectureWrapper>
+          <Link
+            to={`/lecture/${lecture.id}`}
+            style={{ textDecoration: "none" }}
+            key={lecture.id}
+          >
+            <S.LectureWrapper>
+              <S.LectureImage src={lecture.thumbnail} />
+              <S.LectureTitle>{lecture.title}</S.LectureTitle>
+              <S.LectureTagRow>
+                {lecture.tag.map((tag) => (
+                  <S.LectureTag key={tag}>{tag}</S.LectureTag>
+                ))}
+              </S.LectureTagRow>
+              <S.LectureMoreRow>
+                <S.LectureRatingRow>
+                  <S.LectureRatingIcon
+                    src={require("../../assets/icons/rating.png")}
+                  />
+                  <S.LectureRatingText>{lecture.rating}</S.LectureRatingText>
+                </S.LectureRatingRow>
+                <S.LecturePrice>
+                  {lecture.price.toLocaleString()}원
+                </S.LecturePrice>
+              </S.LectureMoreRow>
+            </S.LectureWrapper>
+          </Link>
         ))}
       </S.LecturesContainer>
     </S.LectureListContainer>
