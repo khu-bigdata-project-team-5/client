@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const SelectorContainer = styled.div`
+  cursor: pointer;
   padding: 1rem 2rem;
-  color: ${(props) => (props.selected ? "#FFFFFF" : "#4B3BFF")};
-  border: ${(props) => (props.selected ? "none" : "0.375rem solid #FFFFFF")};
+  background-color: ${(props) => (props.selected ? "#FFFFFF" : "#4B3BFF")};
+  border: ${(props) =>
+    props.selected ? "0.375rem solid transparent" : "0.375rem solid #FFFFFF"};
   border-radius: 0.625rem;
 `;
 

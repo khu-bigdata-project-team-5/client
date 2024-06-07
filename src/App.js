@@ -19,7 +19,7 @@ function App() {
         path="/curriculum/keyword/:category"
         element={<CurriculumKeyword />}
       />
-      <Route path="/curriculum" element={<Curriculum />} />
+      <Route path="/curriculum/:keywords" element={<Curriculum />} />
       <Route path="/other" element={<Other />} />
       <Route path="/other/:id" element={<OtherCurriculum />} />
       <Route path="*" element={<NotFound />} />

@@ -1,9 +1,11 @@
 import * as S from "./Selector.style";
 
-const Selector = ({ children, selected }) => {
+const Selector = ({ children, selected, onClick }) => {
   return (
-    <S.SelectorContainer>
-      <S.SelectorText selected={selected}>{children}</S.SelectorText>
+    <S.SelectorContainer selected={selected}>
+      <S.SelectorText selected={selected} onClick={onClick}>
+        {children}
+      </S.SelectorText>
     </S.SelectorContainer>
   );
 };
