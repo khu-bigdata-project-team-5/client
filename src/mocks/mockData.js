@@ -83,4 +83,16 @@ export const mockData = {
       1,
     ),
   })),
+  [`${ENDPOINTS.CURRICULUM}?keyword=anything`]: createMockLectures([
+    "Javascript",
+    "React",
+    "Node.js",
+    "CSS",
+    "HTML",
+    "Python",
+    "Java",
+    "Spring",
+    "Django",
+    "Flas",
+  ]),
 };
