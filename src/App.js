@@ -15,7 +15,10 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/lecture/:id" element={<Lecture />} />
       <Route path="/curriculum/category" element={<CurriculumCategory />} />
-      <Route path="/curriculum/keyworld" element={<CurriculumKeyword />} />
+      <Route
+        path="/curriculum/keyword/:category"
+        element={<CurriculumKeyword />}
+      />
       <Route path="/curriculum" element={<Curriculum />} />
       <Route path="/other" element={<Other />} />
       <Route path="/other/:id" element={<OtherCurriculum />} />
