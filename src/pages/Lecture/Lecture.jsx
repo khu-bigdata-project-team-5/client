@@ -1,5 +1,5 @@
 import * as S from "./Lecture.style";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading.jsx";
 import Navbar from "../../componenets/Navbar/Navbar.jsx";
 import useFetch from "../../hooks/useFetch.js";
@@ -32,8 +32,18 @@ const Lecture = () => {
         <S.LectureAnalysisDetail
           data={{ ...lecture.classification, ...lecture.details }}
         />
-        {/* <S.LectureTitle>다음 추천 강의</S.LectureTitle>
-        <S.LectureReccomendationDetail /> */}
+        <S.LectureTitle>다음 추천 강의</S.LectureTitle>
+        <S.LectureReccomendationDetailContainer>
+          {lecture.next_lectures.map((recommendation) => (
+            <Link
+              to={`/lecture/${recommendation.id}`}
+              style={{ textDecoration: "none" }}
+              key={recommendation.id}
+            >
+              <S.LectureReccomendationDetailItem lecture={recommendation} />
+            </Link>
+          ))}
+        </S.LectureReccomendationDetailContainer>
       </S.LectureMain>
     </S.LectureLayout>
   );

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import LectureInfo from "../../componenets/LectureInfo/LectureInfo";
 import LectureAnalsys from "../../componenets/LectureAnalysis/LectureAnalysis";
+import Lecture from "../../componenets/Lecture/Lecture";
 
 export const LectureLayout = styled.div`
   display: flex;
@@ -28,4 +29,10 @@ export const LectureAnalysisDetail = styled(LectureAnalsys)`
   margin-bottom: 3rem;
 `;
 
-// export const LectureReccomendationDetail = styled()``;
+export const LectureReccomendationDetailContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+`;
+
+export const LectureReccomendationDetailItem = styled(Lecture)``;

@@ -9,7 +9,7 @@ const Lecture = ({ lecture, className, onClick }) => {
       <S.LectureImage src={lecture.thumbnail} />
       <S.LectureTitle>{lecture.title}</S.LectureTitle>
       <S.LectureTagRow>
-        {lecture.tag.map((tag) => (
+        {lecture.tags.map((tag) => (
           <S.LectureTag key={tag}>{tag}</S.LectureTag>
         ))}
       </S.LectureTagRow>
