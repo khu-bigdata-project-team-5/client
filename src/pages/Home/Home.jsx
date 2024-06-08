@@ -57,6 +57,7 @@ const Home = () => {
   useEffect(() => {
     fetchLectures();
   }, [selectedCategory]);
+
   if (keywordsLoading || lecturesLoading) return <Loading />;
   if (keywordsError || lecturesError) alert("에러가 발생했습니다.");
   return (
