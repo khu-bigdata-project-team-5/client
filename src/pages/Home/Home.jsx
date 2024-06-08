@@ -41,10 +41,10 @@ const Home = () => {
   ];
   const [selectedCategory, setSelectedCategory] = useState(0);
   const {
-    data: keywords,
-    loading: keywordsLoading,
-    error: keywordsError,
-  } = useFetch(ENDPOINTS.KEYWORDS, { method: "get" });
+    data: topLanguages,
+    loading: topLanguagesLoading,
+    error: topLanguagesError,
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
   const {
     data: lectures,
     loading: lecturesLoading,
@@ -57,12 +57,12 @@ const Home = () => {
   useEffect(() => {
     fetchLectures();
   }, [selectedCategory]);
-  if (keywordsLoading || lecturesLoading) return <Loading />;
-  if (keywordsError || lecturesError) alert("에러가 발생했습니다.");
+  if (topLanguagesLoading || lecturesLoading) return <Loading />;
+  if (topLanguagesError || lecturesError) alert("에러가 발생했습니다.");
   return (
     <S.HomeLayout>
       <S.HomeHeader>
-        <Navbar keywords={keywords} />
+        <Navbar topLanguages={topLanguages} />
       </S.HomeHeader>
       <S.HomeMain>
         <S.HomeCategorySelector

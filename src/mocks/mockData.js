@@ -1,14 +1,14 @@
 import { ENDPOINTS } from "../api/endpoints";
-import { faker } from "@faker-js/faker";
+import { fakerKO } from "@faker-js/faker";
 
 const createMockLectures = (tags) =>
   Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
-    thumbnail: faker.image.urlPicsumPhotos(),
-    title: faker.lorem.sentence(),
-    tag: faker.helpers.arrayElements(tags, { min: 1, max: 4 }),
-    rating: faker.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
-    price: faker.number.int({ min: 10000, max: 100000 }),
+    thumbnail: fakerKO.image.urlPicsumPhotos(),
+    title: fakerKO.lorem.sentence(),
+    tag: fakerKO.helpers.arrayElements(tags, { min: 1, max: 4 }),
+    rating: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+    price: fakerKO.number.int({ min: 10000, max: 100000 }),
   }));
 
 export const mockData = {
@@ -61,28 +61,22 @@ export const mockData = {
     "TensorFlow",
     "PyTorch",
   ]),
-  [ENDPOINTS.KEYWORDS]: Array.from({ length: 10 }, (_, i) => ({
-    rank: i + 1,
-    keyword: faker.helpers.arrayElements(
-      [
-        "Javascript",
-        "React",
-        "Node.js",
-        "CSS",
-        "HTML",
-        "Python",
-        "Java",
-        "Spring",
-        "Django",
-        "Flask",
-        "TypeScript",
-        "Vue.js",
-        "Angular",
-        "Express",
-      ],
-      1,
-    ),
-  })),
+  [ENDPOINTS.TOP_LANGUAGES]: [
+    "Javascript",
+    "React",
+    "Node.js",
+    "CSS",
+    "HTML",
+    "Python",
+    "Java",
+    "Spring",
+    "Django",
+    "Flask",
+    "TypeScript",
+    "Vue.js",
+    "Angular",
+    "Express",
+  ],
   [`${ENDPOINTS.CURRICULUM}?keyword=anything`]: createMockLectures([
     "Javascript",
     "React",
@@ -95,4 +89,41 @@ export const mockData = {
     "Django",
     "Flas",
   ]),
+  [`${ENDPOINTS.LECTURE}/1`]: {
+    id: 1,
+    title: fakerKO.lorem.sentence(),
+    instructor: fakerKO.person.fullName(),
+    thumbnail: fakerKO.image.urlPicsumPhotos(),
+    price: 30000,
+    rating: 4.7,
+    tags: fakerKO.helpers.arrayElements(
+      ["Javascript", "React", "Node.js", "CSS", "HTML"],
+      { min: 1, max: 4 },
+    ),
+    classification: {
+      good: fakerKO.number.int({ min: 1000, max: 10000 }),
+      bad: fakerKO.number.int({ min: 100, max: 1000 }),
+    },
+    details: {
+      difficulty: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+      practice: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+      material_quality: fakerKO.number.float({
+        min: 1,
+        max: 5,
+        multipleOf: 0.1,
+      }),
+      rating: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+      level: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+    },
+    next_lectures: Array.from({ length: 4 }, (_, idx) => ({
+      id: idx + 1,
+      title: fakerKO.lorem.sentence(),
+      thumbnail: fakerKO.image.urlPicsumPhotos(),
+      tags: fakerKO.helpers
+        .shuffle(["Javascript", "React", "Node.js", "CSS", "HTML"])
+        .slice(0, fakerKO.number.int({ min: 1, max: 4 })),
+      rating: fakerKO.number.float({ min: 1, max: 5, precision: 0.1 }),
+      price: fakerKO.number.int({ min: 10000, max: 100000 }),
+    })),
+  },
 };
