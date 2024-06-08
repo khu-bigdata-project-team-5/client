@@ -9,7 +9,6 @@ export const LectureWrapper = styled.li`
 export const LectureImage = styled.img`
   width: 100%;
   aspect-ratio: 16/9;
-  background-color: #999999;
 `;
 
 export const LectureTitle = styled.h2`

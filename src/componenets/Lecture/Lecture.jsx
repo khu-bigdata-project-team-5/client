@@ -2,11 +2,14 @@ import * as S from "./Lecture.style";
 
 const Lecture = ({ lecture, className, onClick }) => {
   return (
-    <S.LectureWrapper className={className} onClick={() => onClick()}>
+    <S.LectureWrapper
+      className={className}
+      onClick={onClick ? () => onClick() : undefined}
+    >
       <S.LectureImage src={lecture.thumbnail} />
       <S.LectureTitle>{lecture.title}</S.LectureTitle>
       <S.LectureTagRow>
-        {lecture.tag.map((tag) => (
+        {lecture.tags.map((tag) => (
           <S.LectureTag key={tag}>{tag}</S.LectureTag>
         ))}
       </S.LectureTagRow>
