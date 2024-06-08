@@ -1,8 +1,8 @@
 import * as S from "./Lectureinfo.style";
 
-const LectureInfo = ({ lecture }) => {
+const LectureInfo = ({ lecture, className }) => {
   return (
-    <S.LectureInfoContainer>
+    <S.LectureInfoContainer className={className}>
       <S.LectureImage src={lecture.thumbnail} />
       <S.LectureInfoColumn>
         <S.LectureCategory>Udemy / 웹개발</S.LectureCategory>

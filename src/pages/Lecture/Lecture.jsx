@@ -28,9 +28,11 @@ const Lecture = () => {
       <S.LectureMain>
         <S.LectureTitle>강의 정보</S.LectureTitle>
         <S.LectureInfoDetail lecture={lecture} />
-        {/* <S.LectureTitle>강의 분석</S.LectureTitle>
-        <S.LectureAnalysisDetail />
-        <S.LectureTitle>다음 추천 강의</S.LectureTitle>
+        <S.LectureTitle>강의 분석</S.LectureTitle>
+        <S.LectureAnalysisDetail
+          data={{ ...lecture.classification, ...lecture.details }}
+        />
+        {/* <S.LectureTitle>다음 추천 강의</S.LectureTitle>
         <S.LectureReccomendationDetail /> */}
       </S.LectureMain>
     </S.LectureLayout>

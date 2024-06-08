@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import LectureInfo from "../../componenets/LectureInfo/LectureInfo";
+import LectureAnalsys from "../../componenets/LectureAnalysis/LectureAnalysis";
 
 export const LectureLayout = styled.div`
   display: flex;
@@ -23,8 +24,8 @@ export const LectureInfoDetail = styled(LectureInfo)`
   margin-bottom: 3rem;
 `;
 
-// export const LectureAnalysisDetail = styled()`
-//   margin-bottom: 3rem;
-// `;
+export const LectureAnalysisDetail = styled(LectureAnalsys)`
+  margin-bottom: 3rem;
+`;
 
 // export const LectureReccomendationDetail = styled()``;
