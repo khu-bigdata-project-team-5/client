@@ -5,7 +5,9 @@
   "private": true,
   "dependencies": {
     "@mui/x-date-pickers": "^6.19.6",
+    "chart.js": "^4.4.3",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-datepicker": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
