@@ -34,7 +34,7 @@ const Navbar = ({ keywords }) => {
         <Link to="/other" style={{ textDecoration: "none" }}>
           <S.NavbarItem>다른 커리큘럼</S.NavbarItem>
         </Link>
-        <Link to="/curriculum/keyworld" style={{ textDecoration: "none" }}>
+        <Link to="/curriculum/category" style={{ textDecoration: "none" }}>
           <S.NavbarItem>나의 커리큘럼</S.NavbarItem>
         </Link>
       </S.NavbarItemWrapper>
