@@ -100,11 +100,20 @@ const CurriculumKeyword = () => {
       {selectedKeywords.length === 4 ? (
         <Link
           to={`/curriculum/${selectedKeywords.join(",")}`}
-          style={{ textDecoration: "none" }}
+          style={{
+            textDecoration: "none",
+            marginLeft: "auto",
+          }}
         >
-          <S.CurriculumNext>다음</S.CurriculumNext>
+          <S.CurriculumNext isShowed={selectedKeywords.length === 4}>
+            다음
+          </S.CurriculumNext>
         </Link>
-      ) : null}
+      ) : (
+        <S.CurriculumNext isShowed={selectedKeywords.length === 4}>
+          다음
+        </S.CurriculumNext>
+      )}
     </S.CurriculumKeywordLayout>
   );
 };

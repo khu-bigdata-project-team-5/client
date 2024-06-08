@@ -16,17 +16,17 @@ export const CurriculumKeywordLayout = styled.div`
 export const CurriculumTitleText = styled(CurriculumTitle)``;
 
 export const CurriculumSubtitleText = styled(CurriculumSubtitle)`
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 `;
 
 export const CurriculumKeywordList = styled(KeywordList)`
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 `;
 
 export const CurriculumNext = styled.p`
   margin-left: auto;
-  margin-right: 10rem;
+  margin-right: 4rem;
   font-size: 4rem;
   font-weight: bold;
-  color: #ffffff;
+  color: ${(props) => (props.isShowed ? "#ffffff" : "#444444")};
 `;

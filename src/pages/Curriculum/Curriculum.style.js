@@ -10,12 +10,29 @@ export const CurriculumLayout = styled.div`
   padding: 3rem;
 `;
 
-export const CurriculumTitleText = styled.h1`
+export const CurriculumHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 4rem;
+`;
+
+export const CurriculumTitleText = styled.h1`
   font-size: 4rem;
   font-weight: bold;
   color: #000000;
   text-align: center;
+`;
+
+export const CurriculumSave = styled.button`
+  cursor: ${(props) => (props.enabled ? "pointer" : "default")};
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: ${(props) => (props.enabled ? "#4B3BFF" : "#D3D3D3")};
+  border: none;
+  border-radius: 0.625rem;
 `;
 
 export const CurriCulumKeywordContainer = styled.div`
@@ -40,4 +57,9 @@ export const LectureList = styled.ul`
   gap: 2rem;
 `;
 
-export const LectureItem = styled(Lecture)``;
+export const LectureItem = styled(Lecture)`
+  cursor: pointer;
+  border: ${(props) =>
+    props.selected ? "0.25rem solid #4B3BFF" : "0.25rem solid transparent"};
+  box-sizing: border-box;
+`;
