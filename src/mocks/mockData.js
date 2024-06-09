@@ -62,6 +62,14 @@ const mockData = {
   })),
 };
 
+for (let i = 1; i <= 10; i++) {
+  mockData[`${ENDPOINTS.OTHERS}/${i}`] = {
+    type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
+    tags: fakerKO.helpers.arrayElements(tags, 3),
+    lectures: createMockLectures(20, tags),
+  };
+}
+
 // 카테고리별 강의 데이터를 동적으로 생성합니다.
 categories.forEach((category) => {
   mockData[`${ENDPOINTS.LECTURES}?category=${encodeURIComponent(category)}`] =
