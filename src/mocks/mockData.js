@@ -58,7 +58,7 @@ const mockData = {
   [`${ENDPOINTS.OTHERS}`]: Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
     type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
-    tags: [fakerKO.helpers.arrayElement(tags)],
+    tags: fakerKO.helpers.arrayElements(tags, 3),
   })),
 };
 
