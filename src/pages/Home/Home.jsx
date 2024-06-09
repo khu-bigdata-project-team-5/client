@@ -52,13 +52,14 @@ const Home = () => {
     fetchData: fetchLectures,
   } = useFetch(ENDPOINTS.LECTURES, {
     method: "get",
-    params: { category: selectedCategory },
+    params: { category: categories[selectedCategory].name },
   });
   useEffect(() => {
     fetchLectures();
   }, [selectedCategory]);
   if (topLanguagesLoading || lecturesLoading) return <Loading />;
   if (topLanguagesError || lecturesError) alert("에러가 발생했습니다.");
+  console.log(topLanguages);
   return (
     <S.HomeLayout>
       <S.HomeHeader>

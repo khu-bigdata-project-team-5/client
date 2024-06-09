@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Lecture from "../../componenets/Lecture/Lecture";
+import Lecture from "../Lecture/Lecture";
 
 export const LectureListContainer = styled.div`
   display: flex;

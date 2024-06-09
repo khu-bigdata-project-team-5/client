@@ -59,12 +59,6 @@ const Curriculum = () => {
   if (error1 || error2 || error3 || error4) {
     alert("에러가 발생했습니다. 다시 시도해주세요.");
   }
-  console.log(
-    data1.thumbnail,
-    data2.thumbnail,
-    data3.thumbnail,
-    data4.thumbnail,
-  );
   return (
     <S.CurriculumLayout>
       <S.CurriculumHeader>
