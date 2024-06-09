@@ -19,12 +19,6 @@ export const Title = styled.h1`
   color: #000000;
 `;
 
-export const More = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #4b3bff;
-`;
-
 export const LecturesContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
