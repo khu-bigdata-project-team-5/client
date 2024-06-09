@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CategorySelector from "../../componenets/CategorySelector/CategorySelector";
+import CategorySelector from "../../components/CategorySelector/CategorySelector";
 
 export const HomeLayout = styled.div`
   display: flex;

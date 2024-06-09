@@ -1,7 +1,7 @@
 import * as S from "./Home.style.js";
 import Loading from "../Loading/Loading.jsx";
-import Navbar from "../../componenets/Navbar/Navbar.jsx";
-import LectureList from "../../componenets/LectureList/LectureList.jsx";
+import Navbar from "../../components/Navbar/Navbar.jsx";
+import LectureList from "../../components/LectureList/LectureList.jsx";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import { ENDPOINTS } from "../../api/endpoints.js";
@@ -52,13 +52,14 @@ const Home = () => {
     fetchData: fetchLectures,
   } = useFetch(ENDPOINTS.LECTURES, {
     method: "get",
-    params: { category: selectedCategory },
+    params: { category: categories[selectedCategory].name },
   });
   useEffect(() => {
     fetchLectures();
   }, [selectedCategory]);
   if (topLanguagesLoading || lecturesLoading) return <Loading />;
   if (topLanguagesError || lecturesError) alert("에러가 발생했습니다.");
+  console.log(topLanguages);
   return (
     <S.HomeLayout>
       <S.HomeHeader>

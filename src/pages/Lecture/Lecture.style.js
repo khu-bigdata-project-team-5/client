@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import LectureInfo from "../../componenets/LectureInfo/LectureInfo";
-import LectureAnalsys from "../../componenets/LectureAnalysis/LectureAnalysis";
-import Lecture from "../../componenets/Lecture/Lecture";
+import LectureInfo from "../../components/LectureInfo/LectureInfo";
+import LectureAnalsys from "../../components/LectureAnalysis/LectureAnalysis";
+import Lecture from "../../components/Lecture/Lecture";
 
 export const LectureLayout = styled.div`
   display: flex;
