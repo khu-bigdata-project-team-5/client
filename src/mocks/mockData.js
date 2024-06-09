@@ -55,17 +55,19 @@ const mockData = {
     "Django",
     "Flask",
   ],
-  [`${ENDPOINTS.OTHERS}`]: Array.from({ length: 10 }, (_, i) => ({
+  [`${ENDPOINTS.OTHERS}`]: Array.from({ length: 22 }, (_, i) => ({
     id: i + 1,
     type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
     tags: fakerKO.helpers.arrayElements(tags, 3),
   })),
 };
 
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= 22; i++) {
   mockData[`${ENDPOINTS.OTHERS}/${i}`] = {
-    type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
-    tags: fakerKO.helpers.arrayElements(tags, 3),
+    user: {
+      type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
+      tags: fakerKO.helpers.arrayElements(tags, 3),
+    },
     lectures: createMockLectures(20, tags),
   };
 }
