@@ -6,7 +6,6 @@ const LectureList = ({ lectures }) => {
     <S.LectureListContainer>
       <S.TitleRow>
         <S.Title>추천 강의</S.Title>
-        <S.More>더보기</S.More>
       </S.TitleRow>
       <S.LecturesContainer>
         {lectures.map((lecture) => (

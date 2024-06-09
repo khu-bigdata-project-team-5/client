@@ -1,7 +1,7 @@
 import * as S from "./Lecture.style";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading.jsx";
-import Navbar from "../../componenets/Navbar/Navbar.jsx";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import { ENDPOINTS } from "../../api/endpoints.js";
 

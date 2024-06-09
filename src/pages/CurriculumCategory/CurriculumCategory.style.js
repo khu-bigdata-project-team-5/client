@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import CurriculumTitle from "../../componenets/CurriculumTitle/CurriculumTitle";
-import CategoryList from "../../componenets/CategoryList/CategoryList";
+import CurriculumTitle from "../../components/CurriculumTitle/CurriculumTitle";
+import CategoryList from "../../components/CategoryList/CategoryList";
 
 export const CurriculumCategoryLayout = styled.div`
   display: flex;

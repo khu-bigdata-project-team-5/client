@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Lecture from "../../componenets/Lecture/Lecture";
-import KeySelector from "../../componenets/KeywordSelector/KeywordSelector";
+import Lecture from "../../components/Lecture/Lecture";
+import KeySelector from "../../components/KeywordSelector/KeywordSelector";
 
 export const CurriculumLayout = styled.div`
   display: flex;

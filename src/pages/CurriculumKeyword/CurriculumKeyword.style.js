@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import CurriculumTitle from "../../componenets/CurriculumTitle/CurriculumTitle";
-import CurriculumSubtitle from "../../componenets/CurriculumSubtitle/CurriculumSubtitle";
-import KeywordList from "../../componenets/KeywordList/KeywordList";
+import CurriculumTitle from "../../components/CurriculumTitle/CurriculumTitle";
+import CurriculumSubtitle from "../../components/CurriculumSubtitle/CurriculumSubtitle";
+import KeywordList from "../../components/KeywordList/KeywordList";
 
 export const CurriculumKeywordLayout = styled.div`
   display: flex;
