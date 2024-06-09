@@ -6,7 +6,7 @@ export const UserContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ecebf8;
-  padding: 0.5rem;
+  padding: 1rem 2rem;
   border-radius: 1.125rem;
 `;
 
