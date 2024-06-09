@@ -29,28 +29,28 @@ const Curriculum = () => {
     loading: loading1,
     error: error1,
   } = useFetch(ENDPOINTS.CURRICULUM, {
-    params: { keyword: "anything" /*keywordList[0]*/ },
+    params: { keyword: keywordList[0] },
   });
   const {
     data: data2,
     loading: loading2,
     error: error2,
   } = useFetch(ENDPOINTS.CURRICULUM, {
-    params: { keyword: "anything" /*keywordList[1]*/ },
+    params: { keyword: keywordList[1] },
   });
   const {
     data: data3,
     loading: loading3,
     error: error3,
   } = useFetch(ENDPOINTS.CURRICULUM, {
-    params: { keyword: "anything" /*keywordList[2]*/ },
+    params: { keyword: keywordList[2] },
   });
   const {
     data: data4,
     loading: loading4,
     error: error4,
   } = useFetch(ENDPOINTS.CURRICULUM, {
-    params: { keyword: "anything" /*keywordList[3]*/ },
+    params: { keyword: keywordList[3] },
   });
 
   if (loading1 || loading2 || loading3 || loading4) {
