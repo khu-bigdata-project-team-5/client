@@ -11,12 +11,15 @@ const Lecture = () => {
     data: topLanguages,
     loading: topLanguagesLoading,
     error: topLanguagesError,
-  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
   const {
     data: lecture,
     loading: lectureLoading,
     error: lectureError,
-  } = useFetch(`${ENDPOINTS.LECTURE}/${lectureId}`, { method: "get" });
+  } = useFetch(`${ENDPOINTS.LECTURE}/${lectureId}`, {
+    isMocked: false,
+    method: "get",
+  });
 
   if (topLanguagesLoading || lectureLoading) return <Loading />;
   if (topLanguagesError || lectureError) alert("에러가 발생했습니다.");

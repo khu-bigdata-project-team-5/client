@@ -5,54 +5,24 @@ import LectureList from "../../components/LectureList/LectureList.jsx";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import { ENDPOINTS } from "../../api/endpoints.js";
+import categoryKeywords from "../../data/categoryKeywords.js";
 
 const Home = () => {
-  const categories = [
-    {
-      name: "프로그래밍 언어",
-      unselectIcon: require("../../assets/icons/programming_language_unselect.png"),
-      selectIcon: require("../../assets/icons/programming_language_select.png"),
-    },
-    {
-      name: "웹 개발",
-      unselectIcon: require("../../assets/icons/web_development_unselect.png"),
-      selectIcon: require("../../assets/icons/web_development_select.png"),
-    },
-    {
-      name: "게임 개발",
-      unselectIcon: require("../../assets/icons/game_development_unselect.png"),
-      selectIcon: require("../../assets/icons/game_development_select.png"),
-    },
-    {
-      name: "모바일 앱 개발",
-      unselectIcon: require("../../assets/icons/app_development_unselect.png"),
-      selectIcon: require("../../assets/icons/app_development_select.png"),
-    },
-    {
-      name: "데이터 사이언스",
-      unselectIcon: require("../../assets/icons/data_science_unselect.png"),
-      selectIcon: require("../../assets/icons/data_science_select.png"),
-    },
-    {
-      name: "인공지능",
-      unselectIcon: require("../../assets/icons/ai_unselect.png"),
-      selectIcon: require("../../assets/icons/ai_select.png"),
-    },
-  ];
   const [selectedCategory, setSelectedCategory] = useState(0);
   const {
     data: topLanguages,
     loading: topLanguagesLoading,
     error: topLanguagesError,
-  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "GET" });
   const {
     data: lectures,
     loading: lecturesLoading,
     error: lecturesError,
     fetchData: fetchLectures,
   } = useFetch(ENDPOINTS.LECTURES, {
+    isMocked: true,
     method: "get",
-    params: { category: categories[selectedCategory].name },
+    params: { category: categoryKeywords[selectedCategory].eng_category },
   });
   useEffect(() => {
     fetchLectures();
@@ -66,11 +36,20 @@ const Home = () => {
       </S.HomeHeader>
       <S.HomeMain>
         <S.HomeCategorySelector
-          categories={categories}
+          categories={categoryKeywords}
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
         />
-        <LectureList lectures={lectures} />
+        {
+          // 강의 목록이 없을 경우
+          lectures.lectureList.length === 0 ? (
+            <S.EmptyMessage>
+              해당 카테고리에 등록된 강의가 없습니다.
+            </S.EmptyMessage>
+          ) : (
+            <LectureList lectures={lectures.lectureList} />
+          )
+        }
       </S.HomeMain>
     </S.HomeLayout>
   );
