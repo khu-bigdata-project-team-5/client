@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const CategoryList = ({ categories }) => {
   return (
     <S.CategoryListContainer>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <Link
-          to={`/curriculum/keyword/${category.name}`}
-          key={category.id}
+          to={`/curriculum/keyword/${category.eng_category}`}
+          key={index}
           style={{ textDecoration: "none" }}
         >
-          <S.CategoryListItem>{category.name}</S.CategoryListItem>
+          <S.CategoryListItem>{category.ko_category}</S.CategoryListItem>
         </Link>
       ))}
     </S.CategoryListContainer>

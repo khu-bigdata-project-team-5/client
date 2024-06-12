@@ -29,6 +29,7 @@ const Curriculum = () => {
     loading: loading1,
     error: error1,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    isMocked: true,
     params: { keyword: keywordList[0] },
   });
   const {
@@ -36,6 +37,7 @@ const Curriculum = () => {
     loading: loading2,
     error: error2,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    isMocked: true,
     params: { keyword: keywordList[1] },
   });
   const {
@@ -43,6 +45,7 @@ const Curriculum = () => {
     loading: loading3,
     error: error3,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    isMocked: true,
     params: { keyword: keywordList[2] },
   });
   const {
@@ -50,6 +53,7 @@ const Curriculum = () => {
     loading: loading4,
     error: error4,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    isMocked: true,
     params: { keyword: keywordList[3] },
   });
 
@@ -106,15 +110,15 @@ const Curriculum = () => {
         <S.LectureList>
           {selectedLectureList[0] !== null ? (
             <S.LectureItem
-              key={data1[selectedLectureList[0]].id}
-              lecture={data1[selectedLectureList[0]]}
+              key={data1.lectureList[selectedLectureList[0]].lectureId}
+              lecture={data1.lectureList[selectedLectureList[0]]}
               selected={true}
               onClick={() => setLecture(0, null)}
             />
           ) : (
-            data1.map((lecture, index) => (
+            data1.lectureList.map((lecture, index) => (
               <S.LectureItem
-                key={lecture.id}
+                key={lecture.lectureId}
                 lecture={lecture}
                 selected={false}
                 onClick={() => setLecture(0, index)}
@@ -125,15 +129,15 @@ const Curriculum = () => {
         <S.LectureList>
           {selectedLectureList[1] !== null ? (
             <S.LectureItem
-              key={data2[selectedLectureList[1]].id}
-              lecture={data2[selectedLectureList[1]]}
+              key={data2.lectureList[selectedLectureList[1]].lectureId}
+              lecture={data2.lectureList[selectedLectureList[1]]}
               selected={true}
               onClick={() => setLecture(1, null)}
             />
           ) : (
-            data2.map((lecture, index) => (
+            data2.lectureList.map((lecture, index) => (
               <S.LectureItem
-                key={lecture.id}
+                key={lecture.lectureId}
                 lecture={lecture}
                 selected={false}
                 onClick={() => setLecture(1, index)}
@@ -144,15 +148,15 @@ const Curriculum = () => {
         <S.LectureList>
           {selectedLectureList[2] !== null ? (
             <S.LectureItem
-              key={data3[selectedLectureList[2]].id}
-              lecture={data3[selectedLectureList[2]]}
+              key={data3.lectureList[selectedLectureList[2]].lectureId}
+              lecture={data3.lectureList[selectedLectureList[2]]}
               selected={true}
               onClick={() => setLecture(2, null)}
             />
           ) : (
-            data3.map((lecture, index) => (
+            data3.lectureList.map((lecture, index) => (
               <S.LectureItem
-                key={lecture.id}
+                key={lecture.lectureId}
                 lecture={lecture}
                 selected={false}
                 onClick={() => setLecture(2, index)}
@@ -163,15 +167,15 @@ const Curriculum = () => {
         <S.LectureList>
           {selectedLectureList[3] !== null ? (
             <S.LectureItem
-              key={data4[selectedLectureList[3]].id}
-              lecture={data4[selectedLectureList[3]]}
+              key={data4.lectureList[selectedLectureList[3]].lectureId}
+              lecture={data4.lectureList[selectedLectureList[3]]}
               selected={true}
               onClick={() => setLecture(3, null)}
             />
           ) : (
-            data4.map((lecture, index) => (
+            data4.lectureList.map((lecture, index) => (
               <S.LectureItem
-                key={lecture.id}
+                key={lecture.lectureId}
                 lecture={lecture}
                 selected={false}
                 onClick={() => setLecture(3, index)}

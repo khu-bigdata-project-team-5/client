@@ -10,9 +10,9 @@ const LectureList = ({ lectures }) => {
       <S.LecturesContainer>
         {lectures.map((lecture) => (
           <Link
-            to={`/lecture/${lecture.id}`}
+            to={`/lecture/${lecture.lectureId}`}
             style={{ textDecoration: "none" }}
-            key={lecture.id}
+            key={lecture.lectureId}
           >
             <S.LectureItem lecture={lecture} />
           </Link>

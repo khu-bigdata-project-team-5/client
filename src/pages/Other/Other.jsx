@@ -10,13 +10,13 @@ const Other = () => {
     data: topLanguages,
     loading: topLanguagesLoading,
     error: topLanguagesError,
-  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
 
   const {
     data: others,
     loading: othersLoading,
     error: othersError,
-  } = useFetch(ENDPOINTS.OTHERS, { method: "get" });
+  } = useFetch(ENDPOINTS.OTHERS, { isMocked: false, method: "get" });
 
   if (topLanguagesLoading || othersLoading) return <Loading />;
   if (topLanguagesError || othersError) alert("에러가 발생했습니다.");
@@ -28,15 +28,19 @@ const Other = () => {
       <S.OtherMain>
         <S.OtherTitle>다른 커리큘럼</S.OtherTitle>
         <S.OtherUserList>
-          {others.map((other) => (
-            <Link
-              to={`/other/${other.id}`}
-              key={other.id}
-              style={{ textDecoration: "none" }}
-            >
-              <S.OtherUserItem user={other} />
-            </Link>
-          ))}
+          {others.length === 0 ? (
+            <S.EmptyMessage>다른 사용자가 없습니다.</S.EmptyMessage>
+          ) : (
+            others.map((other) => (
+              <Link
+                to={`/other/${other.id}`}
+                key={other.id}
+                style={{ textDecoration: "none" }}
+              >
+                <S.OtherUserItem user={other} />
+              </Link>
+            ))
+          )}
         </S.OtherUserList>
       </S.OtherMain>
     </S.OtherLayout>
