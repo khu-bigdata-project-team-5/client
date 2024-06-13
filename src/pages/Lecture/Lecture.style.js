@@ -36,3 +36,10 @@ export const LectureReccomendationDetailContainer = styled.div`
 `;
 
 export const LectureReccomendationDetailItem = styled(Lecture)``;
+
+export const EmptyMessage = styled.p`
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+`;

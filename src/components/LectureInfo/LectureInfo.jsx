@@ -1,6 +1,6 @@
 import * as S from "./Lectureinfo.style";
 
-const LectureInfo = ({ lecture, className }) => {
+const LectureInfo = ({ lecture, keywords, className }) => {
   return (
     <S.LectureInfoContainer className={className}>
       <S.LectureImage src={lecture.thumbnail} />
@@ -11,11 +11,11 @@ const LectureInfo = ({ lecture, className }) => {
           <S.LectureAuthor>{lecture.instructor}</S.LectureAuthor>
           <S.LectureRatingIcon src={require("../../assets/icons/rating.png")} />
           <S.LectureRatingText>{lecture.rating}</S.LectureRatingText>
-          <S.LecturePrice>{lecture.price.toLocaleString()}원</S.LecturePrice>
+          <S.LecturePrice>{lecture.price.toLocaleString()}$</S.LecturePrice>
         </S.LectureAuthorRatingRow>
         <S.LectureKeywordRow>
-          {lecture.tags.map((tag) => (
-            <S.LectureKeyword key={tag}>{tag}</S.LectureKeyword>
+          {keywords.map((keyword) => (
+            <S.LectureKeyword key={keyword}>{keyword}</S.LectureKeyword>
           ))}
         </S.LectureKeywordRow>
       </S.LectureInfoColumn>

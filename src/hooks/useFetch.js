@@ -39,7 +39,7 @@ const useFetch = (endpoint, options = {}) => {
 
   useEffect(() => {
     fetchData();
-  }, [endpoint, method, JSON.stringify(params), JSON.stringify(body)]);
+  }, []);
 
   return { data, loading, error, fetchData };
 };

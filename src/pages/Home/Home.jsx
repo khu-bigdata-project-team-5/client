@@ -20,7 +20,7 @@ const Home = () => {
     error: lecturesError,
     fetchData: fetchLectures,
   } = useFetch(ENDPOINTS.LECTURES, {
-    isMocked: true,
+    isMocked: false,
     method: "get",
     params: { category: categoryKeywords[selectedCategory].eng_category },
   });

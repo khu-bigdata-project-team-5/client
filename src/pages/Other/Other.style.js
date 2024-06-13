@@ -26,3 +26,10 @@ export const OtherUserList = styled.ul`
 `;
 
 export const OtherUserItem = styled(User)``;
+
+export const EmptyMessage = styled.p`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+`;
