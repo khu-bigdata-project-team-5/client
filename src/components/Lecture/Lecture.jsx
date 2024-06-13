@@ -23,7 +23,7 @@ const Lecture = ({ lecture, className, onClick }) => {
           <S.LectureRatingIcon src={require("../../assets/icons/rating.png")} />
           <S.LectureRatingText>{lecture.avgRating}</S.LectureRatingText>
         </S.LectureRatingRow>
-        <S.LecturePrice>{lecture.price.toLocaleString()}$</S.LecturePrice>
+        <S.LecturePrice>{lecture.price}$</S.LecturePrice>
       </S.LectureMoreRow>
     </S.LectureWrapper>
   );
