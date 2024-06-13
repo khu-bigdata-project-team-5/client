@@ -48,7 +48,7 @@ const categoryKeywords = [
       "Unreal",
       "Godot",
       "GameMaker",
-      "RPGMaker",
+      "Pygame",
       "Phaser",
       "UDP",
       "Socket",
