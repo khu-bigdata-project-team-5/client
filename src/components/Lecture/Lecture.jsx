@@ -12,8 +12,11 @@ const Lecture = ({ lecture, className, onClick }) => {
         {/* {lecture.tags.map((tag) => (
           <S.LectureTag key={tag}>{tag}</S.LectureTag>
         ))} */}
-        <S.LectureTag>{lecture.topword1}</S.LectureTag>
-        <S.LectureTag>{lecture.topword2}</S.LectureTag>
+        {lecture.topword1 && <S.LectureTag>{lecture.topword1}</S.LectureTag>}
+        {lecture.topword2 && <S.LectureTag>{lecture.topword2}</S.LectureTag>}
+        {lecture.topword3 && <S.LectureTag>{lecture.topword3}</S.LectureTag>}
+        {lecture.topword4 && <S.LectureTag>{lecture.topword4}</S.LectureTag>}
+        {lecture.topword5 && <S.LectureTag>{lecture.topword5}</S.LectureTag>}
       </S.LectureTagRow>
       <S.LectureMoreRow>
         <S.LectureRatingRow>

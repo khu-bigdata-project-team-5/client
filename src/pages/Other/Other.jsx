@@ -28,10 +28,10 @@ const Other = () => {
       <S.OtherMain>
         <S.OtherTitle>다른 커리큘럼</S.OtherTitle>
         <S.OtherUserList>
-          {others.length === 0 ? (
+          {others.studentList.length === 0 ? (
             <S.EmptyMessage>다른 사용자가 없습니다.</S.EmptyMessage>
           ) : (
-            others.map((other) => (
+            others.studentList.map((other) => (
               <Link
                 to={`/other/${other.id}`}
                 key={other.id}

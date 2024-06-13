@@ -32,10 +32,10 @@ const OtherCurriculum = () => {
           <S.OtherCurriculumTitle>님이 들은 강의</S.OtherCurriculumTitle>
         </S.OtherCurriculumTitleRow>
         <S.OtherCurriculumLectureList>
-          {other.lectures.map((lecture) => (
+          {other.otherLectureList.map((lecture) => (
             <Link
-              to={`/lecture/${lecture.id}`}
-              key={lecture.id}
+              to={`/lecture/${lecture.lectureId}`}
+              key={lecture.lectureId}
               style={{ textDecoration: "none" }}
             >
               <S.OtherCurriculumLectureItem lecture={lecture} />

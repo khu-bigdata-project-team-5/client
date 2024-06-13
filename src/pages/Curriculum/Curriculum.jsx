@@ -54,9 +54,8 @@ const Curriculum = () => {
     error: error4,
   } = useFetch(ENDPOINTS.CURRICULUM, {
     isMocked: true,
-    params: { keyword: keywordList[3] },
+    // params: { keyword: keywordList[3] },
   });
-
   if (loading1 || loading2 || loading3 || loading4) {
     return <Loading />;
   }

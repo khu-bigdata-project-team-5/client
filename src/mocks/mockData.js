@@ -14,16 +14,18 @@ const createMockLectures = (length, tags) =>
     price: fakerKO.number.int({ min: 10000, max: 100000 }),
     topword1: fakerKO.helpers.arrayElement(tags),
     topword2: fakerKO.helpers.arrayElement(tags),
+    topword3: fakerKO.helpers.arrayElement(tags),
+    topword4: fakerKO.helpers.arrayElement(tags),
+    topword5: fakerKO.helpers.arrayElement(tags),
   }));
 
-const createMockLecture = (id, tags) => ({
+const createMockLecture = (id) => ({
   lectureId: id,
   title: fakerKO.lorem.sentence(),
   instructorName: fakerKO.person.fullName(),
   thumbnail: fakerKO.image.urlPicsumPhotos(),
   price: fakerKO.number.int({ min: 10000, max: 100000 }),
   avgRating: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
-  tags: fakerKO.helpers.arrayElements(tags, { min: 1, max: 4 }),
   good: fakerKO.number.int({ min: 1000, max: 10000 }),
   bad: fakerKO.number.int({ min: 100, max: 1000 }),
   level: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
@@ -35,8 +37,6 @@ const createMockLecture = (id, tags) => ({
   }),
   rating: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
   teaching_quality: fakerKO.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
-
-  next_lectures: createMockLectures(4, tags),
 });
 
 // 기본 모의 데이터를 생성합니다.
@@ -53,21 +53,23 @@ const mockData = {
     "Django",
     "Flask",
   ],
-  [`${ENDPOINTS.OTHERS}`]: Array.from({ length: 22 }, (_, i) => ({
-    urseId: i + 1,
-    type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
-    tags: fakerKO.helpers.arrayElements(tags, 3),
-  })),
+  [`${ENDPOINTS.OTHERS}`]: {
+    studentList: Array.from({ length: 22 }, (_, i) => ({
+      inflearnUserId: null,
+      udemyUserId: i + 1,
+      name: fakerKO.person.lastName(),
+      topword1: fakerKO.helpers.arrayElement(tags),
+      topword2: fakerKO.helpers.arrayElement(tags),
+      topword3: fakerKO.helpers.arrayElement(tags),
+      topword4: fakerKO.helpers.arrayElement(tags),
+      topword5: fakerKO.helpers.arrayElement(tags),
+    })),
+  },
 };
 
 for (let i = 1; i <= 22; i++) {
-  mockData[`${ENDPOINTS.OTHERS}/${i}`] = {
-    userId: i,
-    type: fakerKO.helpers.arrayElement(["Udemy", "Inflearn"]),
-    topWord1: fakerKO.helpers.arrayElement(tags),
-    topWord2: fakerKO.helpers.arrayElement(tags),
-    topWord3: fakerKO.helpers.arrayElement(tags),
-    lectures: createMockLectures(20, tags),
+  mockData[`${ENDPOINTS.OTHERS}/${i}/lectures`] = {
+    otherLectureList: createMockLectures(20, tags),
   };
 }
 
@@ -81,6 +83,10 @@ categoryKeywords.forEach((categoryKeyword) => {
 // 모든 id에 대해 동적으로 mock lecture 데이터를 생성하는 핸들러를 추가합니다.
 for (let i = 1; i <= 100; i++) {
   mockData[`${ENDPOINTS.LECTURE}/${i}`] = createMockLecture(i, tags);
+  mockData[`${ENDPOINTS.KEYWORDS}/${i}`] = fakerKO.helpers.arrayElements(tags, {
+    min: 1,
+    max: 4,
+  });
 }
 
 categoryKeywords.forEach((categoryKeyword) => {
