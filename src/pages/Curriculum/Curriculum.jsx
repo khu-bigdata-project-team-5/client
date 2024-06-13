@@ -29,6 +29,7 @@ const Curriculum = () => {
     loading: loading1,
     error: error1,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    //TODO: 해당 API가 구현되면 연동
     isMocked: true,
     params: { keyword: keywordList[0] },
   });
@@ -37,6 +38,7 @@ const Curriculum = () => {
     loading: loading2,
     error: error2,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    //TODO: 해당 API가 구현되면 연동
     isMocked: true,
     params: { keyword: keywordList[1] },
   });
@@ -45,6 +47,7 @@ const Curriculum = () => {
     loading: loading3,
     error: error3,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    //TODO: 해당 API가 구현되면 연동
     isMocked: true,
     params: { keyword: keywordList[2] },
   });
@@ -53,8 +56,9 @@ const Curriculum = () => {
     loading: loading4,
     error: error4,
   } = useFetch(ENDPOINTS.CURRICULUM, {
+    //TODO: 해당 API가 구현되면 연동
     isMocked: true,
-    // params: { keyword: keywordList[3] },
+    params: { keyword: keywordList[3] },
   });
   if (loading1 || loading2 || loading3 || loading4) {
     return <Loading />;

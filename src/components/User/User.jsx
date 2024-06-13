@@ -1,8 +1,11 @@
 import * as S from "./User.style";
 
-const User = ({ user }) => {
+const User = ({ user, className, onClick }) => {
   return (
-    <S.UserContainer>
+    <S.UserContainer
+      className={className}
+      onClick={onClick === null ? () => {} : onClick}
+    >
       <S.UserType>{user.name} 수강생</S.UserType>
       <S.UserKeywordList>
         {user.topword1 && (

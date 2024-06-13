@@ -25,7 +25,9 @@ export const OtherUserList = styled.ul`
   gap: 3rem;
 `;
 
-export const OtherUserItem = styled(User)``;
+export const OtherUserItem = styled(User)`
+  cursor: pointer;
+`;
 
 export const EmptyMessage = styled.p`
   font-size: 1.5rem;
