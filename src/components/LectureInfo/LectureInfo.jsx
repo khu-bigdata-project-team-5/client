@@ -1,6 +1,6 @@
 import * as S from "./Lectureinfo.style";
 
-const LectureInfo = ({ lecture, keywords, className }) => {
+const LectureInfo = ({ lecture, className }) => {
   return (
     <S.LectureInfoContainer className={className}>
       <S.LectureImage src={lecture.thumbnail} />
@@ -11,12 +11,24 @@ const LectureInfo = ({ lecture, keywords, className }) => {
           <S.LectureAuthor>{lecture.instructor}</S.LectureAuthor>
           <S.LectureRatingIcon src={require("../../assets/icons/rating.png")} />
           <S.LectureRatingText>{lecture.rating}</S.LectureRatingText>
-          <S.LecturePrice>{lecture.price.toLocaleString()}$</S.LecturePrice>
+          <S.LecturePrice>{lecture.price}$</S.LecturePrice>
         </S.LectureAuthorRatingRow>
         <S.LectureKeywordRow>
-          {keywords.map((keyword) => (
-            <S.LectureKeyword key={keyword}>{keyword}</S.LectureKeyword>
-          ))}
+          {lecture.topword1 && (
+            <S.LectureKeyword>{lecture.topword1}</S.LectureKeyword>
+          )}
+          {lecture.topword2 && (
+            <S.LectureKeyword>{lecture.topword2}</S.LectureKeyword>
+          )}
+          {lecture.topword3 && (
+            <S.LectureKeyword>{lecture.topword3}</S.LectureKeyword>
+          )}
+          {lecture.topword4 && (
+            <S.LectureKeyword>{lecture.topword4}</S.LectureKeyword>
+          )}
+          {lecture.topword5 && (
+            <S.LectureKeyword>{lecture.topword5}</S.LectureKeyword>
+          )}
         </S.LectureKeywordRow>
       </S.LectureInfoColumn>
     </S.LectureInfoContainer>

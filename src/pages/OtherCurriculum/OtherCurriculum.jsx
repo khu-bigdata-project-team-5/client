@@ -1,5 +1,5 @@
 import * as S from "./OtherCurriculum.style";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 import Navbar from "../../components/Navbar/Navbar";
@@ -21,7 +21,6 @@ const OtherCurriculum = () => {
     loading: lecturesLoading,
     error: lecturesError,
   } = useFetch(ENDPOINTS.CURRICULUM, {
-    // TODO: 해당 API가 구현다되면 연동
     isMocked: false,
     method: "get",
     params: { keyword: other.topword1 },
@@ -52,10 +51,13 @@ const OtherCurriculum = () => {
             <S.EmptyLecture>해당 강의가 없습니다.</S.EmptyLecture>
           ) : (
             lectures.lectureList.map((lecture) => (
-              <S.OtherCurriculumLectureItem
+              <Link
                 key={lecture.lectureId}
-                lecture={lecture}
-              />
+                to={`/lecture/${lecture.lectureId}`}
+                style={{ textDecoration: "none" }}
+              >
+                <S.OtherCurriculumLectureItem lecture={lecture} />
+              </Link>
             ))
           )}
         </S.OtherCurriculumLectureList>

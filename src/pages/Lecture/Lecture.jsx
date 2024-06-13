@@ -22,28 +22,17 @@ const Lecture = () => {
     isMocked: false,
     method: "get",
   });
-  const {
-    data: keywords,
-    loading: keywordsLoading,
-    error: keywordsError,
-  } = useFetch(`${ENDPOINTS.KEYWORDS}/1`, {
-    // TODO: Keyword API 구현되면 연동
-    isMocked: true,
-    method: "get",
-  });
-  if (lectureLoading || keywordsLoading) return <Loading />;
-  if (lectureError || keywordsError) return <Error />;
+  if (lectureLoading) return <Loading />;
+  if (lectureError) return <Error />;
   return (
     <LectureComponent
       // topLanguages={topLanguages}
       lecture={lecture}
-      keywords={keywords}
     />
   );
 };
 
-const LectureComponent = ({ /*topLanguages,*/ lecture, keywords }) => {
-  console.log(lecture);
+const LectureComponent = ({ /*topLanguages,*/ lecture }) => {
   const {
     data: nextLectures,
     loading: nextLecturesLoading,
@@ -51,8 +40,7 @@ const LectureComponent = ({ /*topLanguages,*/ lecture, keywords }) => {
   } = useFetch(`${ENDPOINTS.CURRICULUM}`, {
     isMocked: false,
     method: "get",
-    // TODO: 해당 API가 구현다되면 연동
-    params: { keyword: keywords[0] },
+    params: { keyword: lecture.topword1 },
   });
   if (nextLecturesLoading) return <Loading />;
   if (nextLecturesError) return <Error />;
@@ -63,7 +51,7 @@ const LectureComponent = ({ /*topLanguages,*/ lecture, keywords }) => {
       </S.LectureHeader>
       <S.LectureMain>
         <S.LectureTitle>강의 정보</S.LectureTitle>
-        <S.LectureInfoDetail lecture={lecture} keywords={keywords} />
+        <S.LectureInfoDetail lecture={lecture} />
         <S.LectureTitle>강의 분석</S.LectureTitle>
         <S.LectureAnalysisDetail
           data={{
