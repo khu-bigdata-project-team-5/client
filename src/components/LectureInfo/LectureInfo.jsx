@@ -11,12 +11,24 @@ const LectureInfo = ({ lecture, className }) => {
           <S.LectureAuthor>{lecture.instructor}</S.LectureAuthor>
           <S.LectureRatingIcon src={require("../../assets/icons/rating.png")} />
           <S.LectureRatingText>{lecture.rating}</S.LectureRatingText>
-          <S.LecturePrice>{lecture.price.toLocaleString()}원</S.LecturePrice>
+          <S.LecturePrice>{lecture.price}$</S.LecturePrice>
         </S.LectureAuthorRatingRow>
         <S.LectureKeywordRow>
-          {lecture.tags.map((tag) => (
-            <S.LectureKeyword key={tag}>{tag}</S.LectureKeyword>
-          ))}
+          {lecture.topword1 && (
+            <S.LectureKeyword>{lecture.topword1}</S.LectureKeyword>
+          )}
+          {lecture.topword2 && (
+            <S.LectureKeyword>{lecture.topword2}</S.LectureKeyword>
+          )}
+          {lecture.topword3 && (
+            <S.LectureKeyword>{lecture.topword3}</S.LectureKeyword>
+          )}
+          {lecture.topword4 && (
+            <S.LectureKeyword>{lecture.topword4}</S.LectureKeyword>
+          )}
+          {lecture.topword5 && (
+            <S.LectureKeyword>{lecture.topword5}</S.LectureKeyword>
+          )}
         </S.LectureKeywordRow>
       </S.LectureInfoColumn>
     </S.LectureInfoContainer>

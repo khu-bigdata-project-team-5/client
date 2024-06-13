@@ -21,8 +21,17 @@ export const OtherTitle = styled.h1`
 
 export const OtherUserList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
 `;
 
-export const OtherUserItem = styled(User)``;
+export const OtherUserItem = styled(User)`
+  cursor: pointer;
+`;
+
+export const EmptyMessage = styled.p`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+`;

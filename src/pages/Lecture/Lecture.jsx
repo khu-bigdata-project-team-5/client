@@ -1,48 +1,84 @@
 import * as S from "./Lecture.style";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading.jsx";
+import Error from "../Error/Error.jsx";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import { ENDPOINTS } from "../../api/endpoints.js";
 
 const Lecture = () => {
   const { lectureId } = useParams();
-  const {
-    data: topLanguages,
-    loading: topLanguagesLoading,
-    error: topLanguagesError,
-  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
+  //TODO: 키워드 순위 추후 구현
+  // const {
+  //   data: topLanguages,
+  //   loading: topLanguagesLoading,
+  //   error: topLanguagesError,
+  // } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
   const {
     data: lecture,
     loading: lectureLoading,
     error: lectureError,
-  } = useFetch(`${ENDPOINTS.LECTURE}/${lectureId}`, { method: "get" });
+  } = useFetch(`${ENDPOINTS.LECTURE}/${lectureId}`, {
+    isMocked: false,
+    method: "get",
+  });
+  if (lectureLoading) return <Loading />;
+  if (lectureError) return <Error />;
+  return (
+    <LectureComponent
+      // topLanguages={topLanguages}
+      lecture={lecture}
+    />
+  );
+};
 
-  if (topLanguagesLoading || lectureLoading) return <Loading />;
-  if (topLanguagesError || lectureError) alert("에러가 발생했습니다.");
+const LectureComponent = ({ /*topLanguages,*/ lecture }) => {
+  const {
+    data: nextLectures,
+    loading: nextLecturesLoading,
+    error: nextLecturesError,
+  } = useFetch(`${ENDPOINTS.CURRICULUM}`, {
+    isMocked: false,
+    method: "get",
+    params: { keyword: lecture.topword1 },
+  });
+  if (nextLecturesLoading) return <Loading />;
+  if (nextLecturesError) return <Error />;
   return (
     <S.LectureLayout>
       <S.LectureHeader>
-        <Navbar topLanguages={topLanguages} />
+        <Navbar />
       </S.LectureHeader>
       <S.LectureMain>
         <S.LectureTitle>강의 정보</S.LectureTitle>
         <S.LectureInfoDetail lecture={lecture} />
         <S.LectureTitle>강의 분석</S.LectureTitle>
         <S.LectureAnalysisDetail
-          data={{ ...lecture.classification, ...lecture.details }}
+          data={{
+            level: lecture.level,
+            rating: lecture.rating,
+            practice: lecture.practice,
+            reference: lecture.reference,
+            teaching_quality: lecture.teaching_quality,
+            bad: lecture.bad,
+            good: lecture.good,
+          }}
         />
         <S.LectureTitle>다음 추천 강의</S.LectureTitle>
         <S.LectureReccomendationDetailContainer>
-          {lecture.next_lectures.map((recommendation) => (
-            <Link
-              to={`/lecture/${recommendation.id}`}
-              style={{ textDecoration: "none" }}
-              key={recommendation.id}
-            >
-              <S.LectureReccomendationDetailItem lecture={recommendation} />
-            </Link>
-          ))}
+          {nextLectures.lectureList.length === 0 ? (
+            <S.EmptyMessage>추천 강의가 없습니다.</S.EmptyMessage>
+          ) : (
+            nextLectures.lectureList.map((recommendation) => (
+              <Link
+                to={`/lecture/${recommendation.lectureId}`}
+                style={{ textDecoration: "none" }}
+                key={recommendation.lectureId}
+              >
+                <S.LectureReccomendationDetailItem lecture={recommendation} />
+              </Link>
+            ))
+          )}
         </S.LectureReccomendationDetailContainer>
       </S.LectureMain>
     </S.LectureLayout>

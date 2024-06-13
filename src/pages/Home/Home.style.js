@@ -15,3 +15,9 @@ export const HomeMain = styled.main`
 export const HomeCategorySelector = styled(CategorySelector)`
   margin-bottom: 3rem;
 `;
+
+export const EmptyMessage = styled.p`
+  font-size: 2rem;
+  text-align: center;
+  color: #000000;
+`;

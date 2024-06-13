@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import apiService from "../services/apiService";
 import mockService from "../services/mockService";
 
 const useFetch = (endpoint, options = {}) => {
-  const { method = "get", params = {}, body = {} } = options;
+  const { isMocked = true, method = "get", params = {}, body = {} } = options;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,25 +11,25 @@ const useFetch = (endpoint, options = {}) => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const service = mockService;
+      const service = isMocked ? mockService : apiService;
       let response;
-      switch (method.toLowerCase()) {
-        case "get":
-          response = await service.get(endpoint, { params });
+      switch (method) {
+        case "GET":
+          response = await service.get(endpoint, params);
           break;
-        case "post":
-          response = await service.post(endpoint, { body });
+        case "POST":
+          response = await service.post(endpoint, body);
           break;
-        case "put":
-          response = await service.put(endpoint, { body });
+        case "PUT":
+          response = await service.put(endpoint, body);
           break;
-        case "delete":
-          response = await service.delete(endpoint, { params });
+        case "DELETE":
+          response = await service.delete(endpoint, params);
           break;
         default:
-          response = await service.get(endpoint, { params });
+          response = await service.get(endpoint, params);
       }
-      setData(response.data);
+      setData(response);
     } catch (error) {
       setError(error);
     } finally {

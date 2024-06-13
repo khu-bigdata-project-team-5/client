@@ -10,7 +10,7 @@ const CategorySelector = ({
     <S.CategorySelectorWrapper className={className}>
       {categories.map((category, index) => (
         <S.CategoryConatiner
-          key={category.name}
+          key={category.eng_category}
           onClick={() => onSelectCategory(index)}
           selected={category === selectedCategory}
         >
@@ -20,7 +20,7 @@ const CategorySelector = ({
             <S.CateogoryIcon src={category.unselectIcon} alt={category.name} />
           )}
           <S.CategoryText selected={selectedCategory === index}>
-            {category.name}
+            {category.ko_category}
           </S.CategoryText>
         </S.CategoryConatiner>
       ))}

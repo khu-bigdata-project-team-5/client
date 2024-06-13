@@ -13,14 +13,19 @@ const CurriculumKeyword = () => {
         : [...prevSelectedKeywords, keyword],
     );
   };
+  const currentCategoryKeyword = categoryKeywords.find(
+    (categoryKeyword) => categoryKeyword.eng_category === category,
+  );
   return (
     <S.CurriculumKeywordLayout>
       <S.CurriculumTitleText>
         관심있는 키워드를 선택해주세요
       </S.CurriculumTitleText>
-      <S.CurriculumSubtitleText>분야: {category}</S.CurriculumSubtitleText>
+      <S.CurriculumSubtitleText>
+        분야:{currentCategoryKeyword.ko_category}{" "}
+      </S.CurriculumSubtitleText>
       <S.CurriculumKeywordList
-        keywords={categoryKeywords[category]}
+        keywords={currentCategoryKeyword.keywords}
         selectedKeywords={selectedKeywords}
         onSelectedKeyword={handleSelectedKeyword}
       />
