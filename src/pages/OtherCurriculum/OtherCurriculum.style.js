@@ -36,3 +36,10 @@ export const OtherCurriculumLectureList = styled.ul`
 `;
 
 export const OtherCurriculumLectureItem = styled(Lecture)``;
+
+export const EmptyLecture = styled.p`
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+`;

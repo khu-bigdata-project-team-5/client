@@ -17,7 +17,7 @@ const OtherCurriculum = () => {
     data: other,
     loading: otherLoading,
     error: otherError,
-  } = useFetch(`${ENDPOINTS.OTHERS}/${id}`, { method: "get" });
+  } = useFetch(`${ENDPOINTS.OTHERS}/${id}/lectures`, { method: "get" });
 
   if (topLanguagesLoading || otherLoading) return <Loading />;
   if (topLanguagesError || otherError) alert("에러가 발생했습니다.");
@@ -32,15 +32,19 @@ const OtherCurriculum = () => {
           <S.OtherCurriculumTitle>님이 들은 강의</S.OtherCurriculumTitle>
         </S.OtherCurriculumTitleRow>
         <S.OtherCurriculumLectureList>
-          {other.otherLectureList.map((lecture) => (
-            <Link
-              to={`/lecture/${lecture.lectureId}`}
-              key={lecture.lectureId}
-              style={{ textDecoration: "none" }}
-            >
-              <S.OtherCurriculumLectureItem lecture={lecture} />
-            </Link>
-          ))}
+          {other.otherLectureList.length === 0 ? (
+            <S.EmptyLecture>듣지 않은 강의가 없습니다.</S.EmptyLecture>
+          ) : (
+            other.otherLectureList.map((lecture) => (
+              <Link
+                to={`/lecture/${lecture.lectureId}`}
+                key={lecture.lectureId}
+                style={{ textDecoration: "none" }}
+              >
+                <S.OtherCurriculumLectureItem lecture={lecture} />
+              </Link>
+            ))
+          )}
         </S.OtherCurriculumLectureList>
       </S.OtherCurriculumMain>
     </S.OtherCurriculumLayout>

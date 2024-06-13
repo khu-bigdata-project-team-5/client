@@ -21,7 +21,7 @@ export const OtherTitle = styled.h1`
 
 export const OtherUserList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
 `;
 

@@ -33,8 +33,8 @@ const Other = () => {
           ) : (
             others.studentList.map((other) => (
               <Link
-                to={`/other/${other.id}`}
-                key={other.id}
+                to={`/other/${other.udemyUserId}`}
+                key={other.udemyUserId}
                 style={{ textDecoration: "none" }}
               >
                 <S.OtherUserItem user={other} />
