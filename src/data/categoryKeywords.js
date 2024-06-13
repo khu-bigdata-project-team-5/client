@@ -1,4 +1,3 @@
-// TODO: 카테고리별 키워드 만들고 매칭 다시하기
 const categoryKeywords = [
   {
     ko_category: "프로그래밍 언어",

@@ -9,13 +9,11 @@ import { ENDPOINTS } from "../../api/endpoints";
 const OtherCurriculum = () => {
   const location = useLocation();
   const { other } = location.state;
-  console.log(other.topword1);
-  //TODO: 키워드 순위 추후 구현
-  // const {
-  //   data: topLanguages,
-  //   loading: topLanguagesLoading,
-  //   error: topLanguagesError,
-  // } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
+  const {
+    data: topLanguages,
+    loading: topLanguagesLoading,
+    error: topLanguagesError,
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
   const {
     data: lectures,
     loading: lecturesLoading,
@@ -25,12 +23,12 @@ const OtherCurriculum = () => {
     method: "get",
     params: { keyword: other.topword1 },
   });
-  if (lecturesLoading) return <Loading />;
-  if (lecturesError) return <Error />;
+  if (topLanguagesLoading || lecturesLoading) return <Loading />;
+  if (topLanguagesError || lecturesError) return <Error />;
   return (
     <S.OtherCurriculumLayout>
       <S.OtherCurriculumHeader>
-        <Navbar />
+        <Navbar topLanguages={topLanguages} />
       </S.OtherCurriculumHeader>
       <S.OtherCurriculumMain>
         <S.OtherCurriculumTitleRow>

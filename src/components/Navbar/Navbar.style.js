@@ -21,10 +21,11 @@ export const NavbarRankWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 export const NavbarRankTitle = styled.p`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: #ffd700;
@@ -39,7 +40,7 @@ export const NavbarSlider = styled(Slider)`
 `;
 
 export const NavbarRankKeywordItem = styled.p`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: #ffd700;
