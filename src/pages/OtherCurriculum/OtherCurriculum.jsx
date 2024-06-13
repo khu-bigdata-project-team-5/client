@@ -5,10 +5,12 @@ import Loading from "../Loading/Loading";
 import Navbar from "../../components/Navbar/Navbar";
 import useFetch from "../../hooks/useFetch";
 import { ENDPOINTS } from "../../api/endpoints";
+import { useEffect, useState } from "react";
 
 const OtherCurriculum = () => {
   const location = useLocation();
   const { other } = location.state;
+  const [viewLectures, setViewLectures] = useState([]);
   const {
     data: topLanguages,
     loading: topLanguagesLoading,
@@ -23,6 +25,15 @@ const OtherCurriculum = () => {
     method: "get",
     params: { keyword: other.topword1 },
   });
+  useEffect(() => {
+    if (lectures && lectures.lectureList) {
+      const min = 4;
+      const max = 10;
+      const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
+      const viewLectures = lectures.lectureList.slice(0, randomCount);
+      setViewLectures(viewLectures);
+    }
+  }, [lectures]);
   if (topLanguagesLoading || lecturesLoading) return <Loading />;
   if (topLanguagesError || lecturesError) return <Error />;
   return (
@@ -45,10 +56,10 @@ const OtherCurriculum = () => {
           <S.OtherCurriculumTitle>님이 들은 강의</S.OtherCurriculumTitle>
         </S.OtherCurriculumTitleRow>
         <S.OtherCurriculumLectureList>
-          {lectures.lectureList.length === 0 ? (
+          {viewLectures.length === 0 ? (
             <S.EmptyLecture>해당 강의가 없습니다.</S.EmptyLecture>
           ) : (
-            lectures.lectureList.map((lecture) => (
+            viewLectures.map((lecture) => (
               <Link
                 key={lecture.lectureId}
                 to={`/lecture/${lecture.lectureId}`}
