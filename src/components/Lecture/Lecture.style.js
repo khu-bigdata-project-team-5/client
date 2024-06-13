@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const LectureWrapper = styled.li`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const LectureImage = styled.img`
-  width: 100%;
   aspect-ratio: 16/9;
 `;
 
