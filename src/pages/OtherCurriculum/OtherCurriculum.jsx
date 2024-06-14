@@ -27,10 +27,8 @@ const OtherCurriculum = () => {
   });
   useEffect(() => {
     if (lectures && lectures.lectureList) {
-      const min = 4;
-      const max = 10;
-      const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
-      const viewLectures = lectures.lectureList.slice(0, randomCount);
+      // 4개로 제한
+      const viewLectures = lectures.lectureList.slice(0, 4);
       setViewLectures(viewLectures);
     }
   }, [lectures]);
