@@ -1,5 +1,7 @@
 # INFoU Client
 
+## [INFoU 바로가기](https://github.com/philip-lee-khu/2024-BIGDATA-PROJECT-5)
+
 목차
 
 - [Introduction](#Introduction)
