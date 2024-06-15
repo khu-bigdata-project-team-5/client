@@ -110,7 +110,7 @@ enum, 상수, 모델 등을 모아놓은 디렉토리입니다.
 
 ### Video
 
-[![INFoU Client Demo](https://img.youtube.com/vi/vlKwG_bhpgw/0.jpg)](https://youtu.be/vlKwG_bhpgw)
+[![INFoU Client Demo](https://img.youtube.com/vi/Ev2cvt--sRk/0.jpg)](https://youtu.be/Ev2cvt--sRk)
 
 ## Contribution
 
