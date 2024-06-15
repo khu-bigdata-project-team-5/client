@@ -3,10 +3,27 @@ import apiService from "../services/apiService";
 import mockService from "../services/mockService";
 
 const useFetch = (endpoint, options = {}) => {
-  const { isMocked = false, method = "get", params = {}, body = {} } = options;
+  const {
+    isMocked = false,
+    method = "get",
+    params = {},
+    body = {},
+    dependencies = {},
+  } = options;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, [
+    isMocked,
+    endpoint,
+    method,
+    JSON.stringify(params),
+    JSON.stringify(body),
+    JSON.stringify(dependencies),
+  ]);
 
   const fetchData = async () => {
     try {
@@ -36,10 +53,6 @@ const useFetch = (endpoint, options = {}) => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, [endpoint, method, JSON.stringify(params), JSON.stringify(body)]);
 
   return { data, loading, error, fetchData };
 };
