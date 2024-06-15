@@ -8,12 +8,11 @@ import { ENDPOINTS } from "../../api/endpoints.js";
 
 const Lecture = () => {
   const { lectureId } = useParams();
-  //TODO: 키워드 순위 추후 구현
-  // const {
-  //   data: topLanguages,
-  //   loading: topLanguagesLoading,
-  //   error: topLanguagesError,
-  // } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
+  const {
+    data: topLanguages,
+    loading: topLanguagesLoading,
+    error: topLanguagesError,
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
   const {
     data: lecture,
     loading: lectureLoading,
@@ -22,17 +21,12 @@ const Lecture = () => {
     isMocked: false,
     method: "get",
   });
-  if (lectureLoading) return <Loading />;
-  if (lectureError) return <Error />;
-  return (
-    <LectureComponent
-      // topLanguages={topLanguages}
-      lecture={lecture}
-    />
-  );
+  if (topLanguagesLoading || lectureLoading) return <Loading />;
+  if (topLanguagesError || lectureError) return <Error />;
+  return <LectureComponent topLanguages={topLanguages} lecture={lecture} />;
 };
 
-const LectureComponent = ({ /*topLanguages,*/ lecture }) => {
+const LectureComponent = ({ topLanguages, lecture }) => {
   const {
     data: nextLectures,
     loading: nextLecturesLoading,

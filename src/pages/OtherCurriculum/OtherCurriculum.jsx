@@ -5,17 +5,17 @@ import Loading from "../Loading/Loading";
 import Navbar from "../../components/Navbar/Navbar";
 import useFetch from "../../hooks/useFetch";
 import { ENDPOINTS } from "../../api/endpoints";
+import { useEffect, useState } from "react";
 
 const OtherCurriculum = () => {
   const location = useLocation();
   const { other } = location.state;
-  console.log(other.topword1);
-  //TODO: 키워드 순위 추후 구현
-  // const {
-  //   data: topLanguages,
-  //   loading: topLanguagesLoading,
-  //   error: topLanguagesError,
-  // } = useFetch(ENDPOINTS.TOP_LANGUAGES, { method: "get" });
+  const [viewLectures, setViewLectures] = useState([]);
+  const {
+    data: topLanguages,
+    loading: topLanguagesLoading,
+    error: topLanguagesError,
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
   const {
     data: lectures,
     loading: lecturesLoading,
@@ -25,12 +25,19 @@ const OtherCurriculum = () => {
     method: "get",
     params: { keyword: other.topword1 },
   });
-  if (lecturesLoading) return <Loading />;
-  if (lecturesError) return <Error />;
+  useEffect(() => {
+    if (lectures && lectures.lectureList) {
+      // 4개로 제한
+      const viewLectures = lectures.lectureList.slice(0, 4);
+      setViewLectures(viewLectures);
+    }
+  }, [lectures]);
+  if (topLanguagesLoading || lecturesLoading) return <Loading />;
+  if (topLanguagesError || lecturesError) return <Error />;
   return (
     <S.OtherCurriculumLayout>
       <S.OtherCurriculumHeader>
-        <Navbar />
+        <Navbar topLanguages={topLanguages} />
       </S.OtherCurriculumHeader>
       <S.OtherCurriculumMain>
         <S.OtherCurriculumTitleRow>
@@ -47,10 +54,10 @@ const OtherCurriculum = () => {
           <S.OtherCurriculumTitle>님이 들은 강의</S.OtherCurriculumTitle>
         </S.OtherCurriculumTitleRow>
         <S.OtherCurriculumLectureList>
-          {lectures.lectureList.length === 0 ? (
+          {viewLectures.length === 0 ? (
             <S.EmptyLecture>해당 강의가 없습니다.</S.EmptyLecture>
           ) : (
-            lectures.lectureList.map((lecture) => (
+            viewLectures.map((lecture) => (
               <Link
                 key={lecture.lectureId}
                 to={`/lecture/${lecture.lectureId}`}

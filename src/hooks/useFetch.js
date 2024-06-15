@@ -3,7 +3,7 @@ import apiService from "../services/apiService";
 import mockService from "../services/mockService";
 
 const useFetch = (endpoint, options = {}) => {
-  const { isMocked = true, method = "get", params = {}, body = {} } = options;
+  const { isMocked = false, method = "get", params = {}, body = {} } = options;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

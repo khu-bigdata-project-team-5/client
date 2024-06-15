@@ -7,20 +7,19 @@ import { ENDPOINTS } from "../../api/endpoints";
 
 const Other = () => {
   const navigate = useNavigate();
-  //TODO: 키워드 순위 추후 구현
-  // const {
-  //   data: topLanguages,
-  //   loading: topLanguagesLoading,
-  //   error: topLanguagesError,
-  // } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
+  const {
+    data: topLanguages,
+    loading: topLanguagesLoading,
+    error: topLanguagesError,
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "get" });
   const {
     data: others,
     loading: othersLoading,
     error: othersError,
   } = useFetch(ENDPOINTS.OTHERS, { isMocked: false, method: "get" });
 
-  if (othersLoading) return <Loading />;
-  if (othersError) alert("에러가 발생했습니다.");
+  if (topLanguagesLoading || othersLoading) return <Loading />;
+  if (topLanguagesError || othersError) alert("에러가 발생했습니다.");
 
   // 포토존 이미지 클릭시 상세 페이지로 이동
   const navigateOtherCurriculums = (userId, index) => {

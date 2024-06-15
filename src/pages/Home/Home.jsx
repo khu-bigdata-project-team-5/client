@@ -9,12 +9,11 @@ import categoryKeywords from "../../data/categoryKeywords.js";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
-  //TODO: 키워드 순위 추후 구현
-  // const {
-  //   data: topLanguages,
-  //   loading: topLanguagesLoading,
-  //   error: topLanguagesError,
-  // } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "GET" });
+  const {
+    data: topLanguages,
+    loading: topLanguagesLoading,
+    error: topLanguagesError,
+  } = useFetch(ENDPOINTS.TOP_LANGUAGES, { isMocked: true, method: "GET" });
   const {
     data: lectures,
     loading: lecturesLoading,
