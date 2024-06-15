@@ -41,7 +41,7 @@ const LectureComponent = ({ topLanguages, lecture }) => {
   return (
     <S.LectureLayout>
       <S.LectureHeader>
-        <Navbar />
+        <Navbar topLanguages={topLanguages} />
       </S.LectureHeader>
       <S.LectureMain>
         <S.LectureTitle>강의 정보</S.LectureTitle>

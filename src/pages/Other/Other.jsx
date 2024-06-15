@@ -32,7 +32,7 @@ const Other = () => {
   return (
     <S.OtherLayout>
       <S.OtherHeader>
-        <Navbar />
+        <Navbar topLanguages={topLanguages} />
       </S.OtherHeader>
       <S.OtherMain>
         <S.OtherTitle>다른 커리큘럼</S.OtherTitle>

@@ -27,12 +27,12 @@ const Home = () => {
   useEffect(() => {
     fetchLectures();
   }, [selectedCategory]);
-  if (lecturesLoading) return <Loading />;
-  if (lecturesError) alert("에러가 발생했습니다.");
+  if (topLanguagesLoading || lecturesLoading) return <Loading />;
+  if (topLanguagesError || lecturesError) alert("에러가 발생했습니다.");
   return (
     <S.HomeLayout>
       <S.HomeHeader>
-        <Navbar />
+        <Navbar topLanguages={topLanguages} />
       </S.HomeHeader>
       <S.HomeMain>
         <S.HomeCategorySelector
