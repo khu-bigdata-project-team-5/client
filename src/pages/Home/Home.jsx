@@ -2,7 +2,7 @@ import * as S from "./Home.style.js";
 import Loading from "../Loading/Loading.jsx";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import LectureList from "../../components/LectureList/LectureList.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import { ENDPOINTS } from "../../api/endpoints.js";
 import categoryKeywords from "../../data/categoryKeywords.js";
@@ -18,15 +18,12 @@ const Home = () => {
     data: lectures,
     loading: lecturesLoading,
     error: lecturesError,
-    fetchData: fetchLectures,
   } = useFetch(ENDPOINTS.LECTURES, {
     isMocked: false,
     method: "get",
     params: { category: categoryKeywords[selectedCategory].eng_category },
+    dependencies: { selectedCategory: selectedCategory },
   });
-  useEffect(() => {
-    fetchLectures();
-  }, [selectedCategory]);
   if (topLanguagesLoading || lecturesLoading) return <Loading />;
   if (topLanguagesError || lecturesError) alert("에러가 발생했습니다.");
   return (
